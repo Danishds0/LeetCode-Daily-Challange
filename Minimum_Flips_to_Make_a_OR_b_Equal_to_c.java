@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 /**
+ * https://leetcode.com/problems/minimum-flips-to-make-a-or-b-equal-to-c/
  * Minimum_Flips_to_Make_a_OR_b_Equal_to_c
  */
 public class Minimum_Flips_to_Make_a_OR_b_Equal_to_c {
@@ -12,8 +13,9 @@ public class Minimum_Flips_to_Make_a_OR_b_Equal_to_c {
         int c = scan.nextInt();
 
         int ans = minFlips(a, b, c);
-        System.out.println("Number of Bits that we need to change - " + ans);
-        
+        System.out.println("Method 1 :" + "Number of Bits that we need to change - " + ans);
+        int ans2 = bitCountMethod(a, b, c);
+        System.out.println("Method 2 :" + "Number of Bits that we need to change - " + ans2);   
         scan.close();
     }
     private static int minFlips(int a, int b, int c) {
@@ -36,5 +38,10 @@ public class Minimum_Flips_to_Make_a_OR_b_Equal_to_c {
         c >>= 1;
 
         return flips;
+    }
+    //One more Approach through which we can solve easily.
+    
+    public static int bitCountMethod(int a, int b, int c) {
+        return Integer.bitCount((a | b) ^ c) + Integer.bitCount((a & b) & ((a | b) ^ c));
     }
 }
