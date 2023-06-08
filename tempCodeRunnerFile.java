@@ -1,0 +1,1 @@
+negativeIndex + 1
